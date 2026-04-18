@@ -1,0 +1,3 @@
+OVMF/MdeModulePkg/Universal/SecurityStubDxe/ff/SecurityStub.obj
+OVMF/MdeModulePkg/Universal/SecurityStubDxe/ff/Defer3rdPartyImageLoad.obj
+OVMF/MdeModulePkg/Universal/SecurityStubDxe/ff/AutoGen.obj

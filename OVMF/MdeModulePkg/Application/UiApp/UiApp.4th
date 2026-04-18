@@ -1,0 +1,16 @@
+
+ PPS_APPLICATION: 462CAA21-7614-4503-836E-8AB6F4662331
+
+ L_EFI> OVMF/MdeModulePkg/Application/UiApp/ff/UiApp.efi 
+
+<{RAW
+ ,GUID> 8913c5e0-33f6-4d86-9bf1-43ef89fc0666
+ $96E0 ,
+ ,GUID> d0bc7cb4-6a47-495f-aa11-710746da06a2
+ $9b20 ,
+}>
+
+INTERFACE>	UiApp
+VERSION>	1.0
+
+PPS;

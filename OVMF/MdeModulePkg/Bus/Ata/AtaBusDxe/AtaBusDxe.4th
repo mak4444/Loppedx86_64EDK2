@@ -1,0 +1,9 @@
+
+ PPS_HEADER: 19DF145A-B1D4-453f-8507-38816676D7F6
+
+ EFI> OVMF/MdeModulePkg/Bus/Ata/AtaBusDxe/ff/AtaBusDxe.efi 
+
+INTERFACE>	AtaBusDxe
+VERSION>	1.0
+
+PPS;

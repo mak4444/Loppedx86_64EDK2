@@ -1,0 +1,10 @@
+
+  PPS_HEADER: df1ccef6-f301-4a63-9661-fc6030dcc880 \ SecMain
+ EFI_FV_FILETYPE_SECURITY_CORE  PPS_H ->Type C!
+
+EFI> OVMF/OvmfPkg/Sec/SecMain/SecMain.efi
+
+INTERFACE>	SecMain
+VERSION>	1.0
+
+PPS;

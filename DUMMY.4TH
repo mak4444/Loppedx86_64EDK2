@@ -1,0 +1,25 @@
+
+Meta_x86_64/SRC/dsrc.f
+
+\- }> : }>  HERE OVER - SWAP OR! ;
+
+: sectionalign ( n -- )
+  4 - DUP W, 0 C, 
+  $19 C, \ EFI_SECTION_RAW
+  4 - 0 DO 0 C, LOOP
+;
+
+ 0xF70000 ALLOCATE THROW TO MSTR_IMG
+  MSTR_IMG DP M!
+
+ $80 sectionalign
+HERE	$17000000 L, \ EFI_SECTION_FIRMWARE_VOLUME_IMAGE
+ S" OVMF/PEIFV.Fv" FILE,
+}>
+
+ $10 sectionalign
+HERE	$17000000 L, \ EFI_SECTION_FIRMWARE_VOLUME_IMAGE
+ S" OVMF/DXEFV.Fv" FILE,
+}>
+
+ MSTR_IMG #TSAVE OVMF/FVMAIN_COMPACT.guided.dummy

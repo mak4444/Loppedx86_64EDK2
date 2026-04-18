@@ -1,0 +1,9 @@
+
+ PPS_HEADER: 93B80004-9FB3-11d4-9A3A-0090273FC14D
+
+ EFI> OVMF/MdeModulePkg/Bus/Pci/PciBusDxe/ff/PciBusDxe.efi 
+
+INTERFACE>	PciBusDxe
+VERSION>	1.0
+
+ PPS;

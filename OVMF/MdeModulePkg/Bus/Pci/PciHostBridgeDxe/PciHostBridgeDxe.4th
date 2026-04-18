@@ -1,0 +1,29 @@
+
+ PPS_HEADER: 128FB770-5E79-4176-9E51-9BB268A17DD1
+
+<{DPX
+ 2 c, 
+ ,GUID> AD61F191-AE5F-4C0E-B9FA-E869D288C64F \ EfiCpuIo2ProtocolGuid
+ 2 c, 
+ ,GUID> 26BACCB1-6F42-11D4-BCE7-0080C73C8881 \ EfiCpuArchProtocolGuid
+ 3 c,
+ 2 c, 
+ ,GUID> 13A3F0F6-264A-3EF0-F2E0-DEC512342F34 \ EfiPcdProtocolGuid
+ 2 c,
+ ,GUID> 0379BE4E-D706-437D-B037-EDB82FB772A4 \ EfiDevicePathUtilitiesProtocolGuid
+ 2 c,
+ ,GUID> 4E939DE9-D948-4B0F-88ED-E6E1CE517C1E \ EdkiiIoMmuProtocol
+ 2 c,
+ ,GUID> F8775D50-8ABD-4ADF-92AC-853E51F6C8DC \ IoMmuAbsentProtocol
+ $4 c,
+ $3 c, $3 c, $3 c,
+ $8 c,
+}>
+
+ EFI> OVMF/MdeModulePkg/Bus/Pci/PciHostBridgeDxe/ff/PciHostBridgeDxe.efi
+
+INTERFACE>	PciHostBridgeDxe
+0 w,
+VERSION>	1.0
+
+PPS;

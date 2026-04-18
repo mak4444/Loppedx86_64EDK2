@@ -1,0 +1,24 @@
+FFS_PAD:  -1 ,  -1 ,  -1 ,  -1 , PPS;
+
+PPS_PEIM: 86D70125-BAA3-4296-A62F-602BEBBB9081
+
+<{DPX_PEI
+  $2 C,
+  ,GUID> B9E0ABFE-5979-4914-977F-6DEE78C278A6 \ EfiPeiLoadFilePpiGuid
+  2 C,
+  ,GUID> 7408D748-FC8C-4EE6-9288-C4BEC092A410 \ EfiPeiMasterBootModePpiGuid
+  2 C,
+  ,GUID> 01F34D25-4DE2-23AD-3FF3-36353FF323F1 \ EfiPeiPcdPpiGuid
+  3 C,
+  3 C,
+  8 C,
+}>
+  0 w,
+
+EFI> OVMF/MdeModulePkg/Core/DxeIplPeim/ff/DxeIpl.efi
+
+INTERFACE>	DxeIpl
+  0 w,
+VERSION>	1.0
+
+PPS;

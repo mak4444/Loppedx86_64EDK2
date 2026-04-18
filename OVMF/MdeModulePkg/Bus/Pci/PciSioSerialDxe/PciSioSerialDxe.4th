@@ -1,0 +1,9 @@
+
+ PPS_HEADER: E2775B47-D453-4EE3-ADA7-391A1B05AC17
+
+ EFI> OVMF/MdeModulePkg/Bus/Pci/PciSioSerialDxe/ff/PciSioSerialDxe.efi 
+
+INTERFACE>	PciSioSerialDxe
+VERSION>	1.0
+
+PPS;

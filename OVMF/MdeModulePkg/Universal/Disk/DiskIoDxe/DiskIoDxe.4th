@@ -1,0 +1,8 @@
+
+ PPS_HEADER: 6B38F7B4-AD98-40e9-9093-ACA2B5A253C4
+
+ EFI> OVMF/MdeModulePkg/Universal/Disk/DiskIoDxe/ff/DiskIoDxe.efi 
+
+VERSION>	1.0
+
+PPS;

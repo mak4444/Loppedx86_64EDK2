@@ -1,0 +1,41 @@
+
+: TITLE   CR  ."  [0;32m Forth[0m  building " 
+\+ TIME&DATE  [ TIME&DATE _DATE_ ] SLITERAL TYPE SPACE [ _TIME_ ] SLITERAL TYPE
+ CR
+ ;
+
+CREATE RRR 99 ALLOT
+
+: FSTART
+
+  SP@ SP0 !
+  RP@ RP0 !
+  ORIGVIEWLINK TO VIEW_LINK
+
+ TITLE
+
+    S" autoexec.4th" ['] INCLUDED CATCH    ?DUP
+    IF ERROR_DO
+    THEN
+
+\  S" autoexec.4th" R/O OPEN-FILE ." OPEN=" H. DUP H.  >R
+\  RRR DUP 88 R@ READ-FILE H. CR TYPE CR
+
+\  R> CLOSE-FILE H. CR
+
+\  BEGIN KEY DUP EMIT BL = UNTIL
+
+  MAIN_CYCLE
+;
+
+: WORDS0
+  CONTEXT @ @
+ BEGIN DUP
+ WHILE DUP ID. SPACE CDR
+ REPEAT DROP ;
+
+:  FMAIN
+ DP !
+FSTART
+;
+

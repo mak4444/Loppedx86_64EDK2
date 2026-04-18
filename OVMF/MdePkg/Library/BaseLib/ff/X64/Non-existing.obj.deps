@@ -1,0 +1,7 @@
+OVMF/MdePkg/Library/BaseLib/ff/X64/Non-existing.obj: \
+ OVMF/MdePkg/Library/BaseLib/X64/Non-existing.c \
+ OVMF/MdePkg/Library/BaseLib/ff/AutoGen.h OVMF/MdePkg/Include/Base.h \
+ OVMF/MdePkg/Include/X64/ProcessorBind.h \
+ OVMF/MdePkg/Include/Library/PcdLib.h \
+ OVMF/MdePkg/Include/Library/BaseLib.h \
+ OVMF/MdePkg/Include/Library/DebugLib.h

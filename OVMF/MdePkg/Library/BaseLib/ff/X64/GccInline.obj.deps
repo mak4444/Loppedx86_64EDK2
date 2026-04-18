@@ -1,0 +1,9 @@
+OVMF/MdePkg/Library/BaseLib/ff/X64/GccInline.obj: \
+ OVMF/MdePkg/Library/BaseLib/X64/GccInline.c \
+ OVMF/MdePkg/Library/BaseLib/ff/AutoGen.h OVMF/MdePkg/Include/Base.h \
+ OVMF/MdePkg/Include/X64/ProcessorBind.h \
+ OVMF/MdePkg/Include/Library/PcdLib.h \
+ OVMF/MdePkg/Library/BaseLib/BaseLibInternals.h \
+ OVMF/MdePkg/Include/Library/BaseLib.h \
+ OVMF/MdePkg/Include/Library/BaseMemoryLib.h \
+ OVMF/MdePkg/Include/Library/DebugLib.h

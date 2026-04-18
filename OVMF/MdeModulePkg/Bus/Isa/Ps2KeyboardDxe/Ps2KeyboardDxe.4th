@@ -1,0 +1,10 @@
+
+ PPS_HEADER: C4D1F932-821F-4744-BF06-6D30F7730F8D
+
+ EFI> OVMF/MdeModulePkg/Bus/Isa/Ps2KeyboardDxe/ff/Ps2KeyboardDxe.efi 
+
+INTERFACE>	Ps2KeyboardDxe
+0 w,
+VERSION>	1.0
+
+PPS;

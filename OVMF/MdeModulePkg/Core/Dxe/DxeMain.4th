@@ -1,0 +1,10 @@
+
+ PPS_HEADER: D6A2CB7F-6A18-4e2f-B43B-9920A733700A \ DxeCore
+ EFI_FV_FILETYPE_DXE_CORE PPS_H ->Type C!
+
+EFI> OVMF/MdeModulePkg/Core/Dxe/ff/DxeCore.efi 
+
+INTERFACE>	DxeCore
+VERSION>	1.0
+
+PPS;
