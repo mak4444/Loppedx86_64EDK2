@@ -24,10 +24,6 @@ all: $(eval export PATH = $(PATH):$(WORKSPACE)/BaseTools:$(WORKSPACE)/.) $(MODUL
 $(MODULE_DIR)/ff/EnglishDxe.efi: $(MODULE_DIR)/ff/EnglishDxe.dll
 	GenFw -e DXE_DRIVER -o $@ $< --zero
 
-#	cp $< OVMF/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/tmp.dll
-#	GenFw -e UEFI_DRIVER -o $@ \
-#	OVMF/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/x0x1x2x3x4x5x6x7x8x9x0x/tmp.dll  --zero
-
 $(MODULE_DIR)/ff/EnglishDxe.dll: $(MODULE_DIR)/ff/EnglishDxe.lib
 	gcc -o $@ \
  -nostdlib -Wl,-n,-q,--gc-sections -z common-page-size=0x40 -Wl,--entry,_ModuleEntryPoint \
