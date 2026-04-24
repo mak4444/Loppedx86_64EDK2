@@ -1,18 +1,15 @@
 
+\- OR!	:  OR! ( N ADDR -- )	DUP @ ROT OR	SWAP ! ;
+\- AND!	: AND! ( N ADDR -- )	DUP @ ROT AND	SWAP ! ;
 
-[IFNDEF] OR!	:  OR! ( N ADDR -- )	DUP @ ROT OR	SWAP ! ; [THEN]
-[IFNDEF] AND!	: AND! ( N ADDR -- )	DUP @ ROT AND	SWAP ! ; [THEN]
+\- >>	: >> RSHIFT ;
 
 : L+!  ( N ADDR -- )	DUP L@ ROT + SWAP L! ;
 \- BOUNDS : BOUNDS OVER + SWAP ;
 \- ?THROW : ?THROW SWAP IF THROW THEN DROP ;
 \- ?PAIRS : ?PAIRS	( x1 x1 -- )  XOR -22 ?THROW ;
-\- >> : >> RSHIFT ;
-\- L>S : L>S ( c -- n )  $FFFFFFFF AND $80000000 XOR $80000000 - ;
 
 0 VALUE MSTR_IMG
-
-REQUIRE NUMBER? ~mak/lib/fpcnum.f 
 
 : CMOVE ( c-addr1 c-addr2 u --- )
 \ Copy u bytes starting at c-addr1 to c-addr2, proceeding in ascending
@@ -20,11 +17,8 @@ REQUIRE NUMBER? ~mak/lib/fpcnum.f
 
    DUP IF  >R
    BEGIN
-    OVER 
-\ ." C=" DUP H.
- C@
- SWAP DUP >R C!
- R> 1+ SWAP 1+ SWAP
+    OVER C@ SWAP DUP >R C!
+    R> 1+ SWAP 1+ SWAP
     R>  1- DUP  >R 0=
    UNTIL
    R>
@@ -38,7 +32,7 @@ REQUIRE NUMBER? ~mak/lib/fpcnum.f
     2swap + -rot			\ -- addr1+len addr2 addr2+len-1
     do  1- dup c@ i  c!  -1 +loop
     drop  exit
-  then
+  THEN
   2drop drop
 ;
 [then]
@@ -84,12 +78,6 @@ REQUIRE NUMBER? ~mak/lib/fpcnum.f
 
 : XOR!	DUP @ ROT XOR SWAP ! ;
 
-\+ OPTVALNEED 0 TO OPTVALNEED
-
-: IHERE HERE ;
-
-0 VALUE ?SOURCETYPE
-: SOURCETYPE_SET -1 TO ?SOURCETYPE ;
 0 VALUE LAST_GUID
 : ,GUID>
   HERE TO LAST_GUID
@@ -129,13 +117,9 @@ MODULE: TC
 
 : IALLOT ALLOT ;
 
-: TCONSTANT ( n -- )	><DP CONSTANT   ><DP ;
+: TCONSTANT ( n -- ) ><DP CONSTANT   ><DP ;
 
 : CONSTANT HERE THERE? IF TCONSTANT BREAK CONSTANT ;
-
-: TENUM ( n -- )	><DP ENUM  ><DP ;
-
-: ENUM HERE THERE? IF TENUM BREAK ENUM ;
 
 0 VALUE 'DO-CONST
 
@@ -143,15 +127,10 @@ MODULE: TC
 
 : MCREATE CREATE  ;
 
-: LABEL        ( | name --- )  \ 
-   IHERE    TCONSTANT ;
-
 : CREATE
-   IHERE  \ $7 + $7 ANDC DUP DP M!
-  TCONSTANT ;
-
-: THERE HERE ;
-: HERE HERE ;
+   HERE  \ $7 + $7 ANDC DUP DP M!
+\  TCONSTANT ;
+  CONSTANT ;
 
 EXPORT
 
@@ -184,53 +163,13 @@ TO <PRE>
 : SEG: ( len seg -- )
   HERE $14 + OVER >SEG_DT
   HERE TCONSTANT , DUP , IALLOT
+\  HERE CONSTANT , DUP , IALLOT
   0 L,
  ; 
 
 : SEG_SET
  M@ DP M!
 ;
-
-:  ?COMP_ STATE M@ =
-         IF  COMPILE,
-         ELSE EXECUTE
-         THEN ;
-
--1 VALUE N.FLOAD?
-
-: TC-INTERPRET ( -> )
-\ ?SOURCETYPE IF  ." SOURCE=" SOURCE H. H. CR  KEY DROP THEN
- ?SOURCETYPE IF  CR SOURCE TYPE ( KEY DROP) THEN
-\  STATE M@ 0= IF  MAIN_S THEN
-  BEGIN
-    PARSE-NAME DUP
-  WHILE
-    SFIND ?DUP
-    IF [']  ?COMP_  CATCH 
-        THROW
-    ELSE 
-[IFDEF] ?_.
-	?_.  N.FLOAD? AND
-        IF  F-SIZE @ >R FSINGLE ['] MFFFFF CATCH R> F-SIZE ! THROW
-		STATE M@ IF LIT, THEN
-        ELSE ?SLITERAL
-        THEN
-[ELSE] ?SLITERAL
-[THEN]
-\         S" NOTFOUND" SFIND 
-	\         IF EXECUTE
-\         ELSE 2DROP
-\         ?SLITERAL
-\         THEN
-    THEN
-    ?STACK
-  REPEAT 2DROP 
-\  STATE M@ 0= IF  MAIN_S THEN
-;
-
- ' TC-INTERPRET  TO INTERPRET
-
-[THEN]
 
 0 VALUE T-STDOUT
 
@@ -270,4 +209,6 @@ TO <PRE>
 [THEN]
 
 ;MODULE
+
 : [T] ALSO TC ; IMMEDIATE
+
