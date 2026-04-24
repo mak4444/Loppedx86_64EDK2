@@ -20,8 +20,6 @@ NumBlocks LengthBlock * TO CODE-SIZE
 
    1 TO YDP_FL
 
- 'FSTART TO LOW_LIM
-
 HERE T-DP !
 CODE-SIZE  ALLOCATE THROW
 
