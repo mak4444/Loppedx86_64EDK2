@@ -285,6 +285,13 @@ run:
  -serial stdio -enable-kvm \
  -hda fat:rw:./disk_nmt -hdb  fat:rw:./Meta_x86_64
 
+forthos:
+	make -f OVMF/ForthPkg/Forth/GNUmakefile
+	cp OVMF/ForthPkg/Forth/ff/Forth.efi disk_nmt/EFI/BOOT/bootx64.efi
+
+#	cp OVMF/ForthPkg/Forth/ff/Forth.efi disk_nmt/work/bootx64.efi
+
+
 cccc:
 	cd OVMF/BaseTools/Source/C/GenFw;make clean; cd ../../../../../
 
@@ -487,4 +494,5 @@ clean:
 	make -f OVMF/OvmfPkg/Library/EmuVariableFvbLib/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Library/DxeCapsuleLibNull/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Library/CustomizedDisplayLib/GNUmakefile clean
+	make -f OVMF/ForthPkg/Forth/GNUmakefile clean
 
