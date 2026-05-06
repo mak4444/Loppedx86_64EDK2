@@ -51,8 +51,8 @@ T: C, THERE C! 1 ALLOT ;
 ' TYPE_M ->DEFER TYPE
 
 
-: CR1 	$d EMIT	$a EMIT ;
-' CR1 ->defer CR
+: CR_1 	$d EMIT	$a EMIT ;
+' CR_1 ->defer CR
 
 : TAB	9  EMIT ;
 
@@ -188,8 +188,7 @@ T: ALIGNED ( addr -- a-addr ) \ 94
 : REL@ ( ADDR -- ADDR' )
          DUP SL@ + ;
 
-: <'>
-R>  1+ DUP 4 + >R  REL@ 4 + ;
+\ : <'> R>  1+ DUP 4 + >R  REL@ 4 + ;
 
 T: >BODY 5 + ;
 
@@ -285,10 +284,3 @@ T: ABORT -1 THROW ;
 
 T: BYE 0 HALT ;
 
-: TTST ( N ADDR -- ) \ dtston
-\	DTSTON
-        SWAP OVER CR
-	OR IF THEN
-	OR 0= IF THEN
-	3 cells
-	DUP 0< IF THEN ;

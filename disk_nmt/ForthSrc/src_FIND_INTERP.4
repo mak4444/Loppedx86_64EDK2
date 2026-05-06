@@ -454,7 +454,7 @@ T: C"
 
 T: EXIT, $C3 C, ;
 
-THS> .(  0)  MCR .( Wortbirne "EXIT" EXITcom 0) 1 TO TLASTFLG
+THS> .(  0)  MCR .( F_BUILD 'EXIT',EXITcom,457,) 1 TO TLASTFLG
 
 : BRANCH, ( A -- ) \ ZZZZ IF  THEN
    0xE9 C,
