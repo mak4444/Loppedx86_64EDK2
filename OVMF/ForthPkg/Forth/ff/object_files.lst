@@ -1,0 +1,3 @@
+OVMF/ForthPkg/Forth/ff/Forth.obj
+OVMF/ForthPkg/Forth/ff/efi64_4th.obj
+OVMF/ForthPkg/Forth/ff/AutoGen.obj
