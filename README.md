@@ -21,3 +21,8 @@ https://github.com/mak4444/gnu-efi-code-forth
 
 https://github.com/mak4444/fasm-efi64-forth
 
+building of a local ForthOS
+
+```
+make forthos
+```
