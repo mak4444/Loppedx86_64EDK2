@@ -3,6 +3,7 @@ extern hello
 extern LibImageHandle
 extern gST
 extern Volume
+extern gHiiDatabase
 
 %define SVIEWLINK 0
 %define DEFLAST 0
@@ -83,6 +84,7 @@ IMGLIT:
 CONSTANT_W "&SYSTAB",gST,0,0
 CONSTANT_W "&VOLUME",Volume,0,0
 CONSTANT_W "&IMAGEHANDLE",LibImageHandle,0,0
+CONSTANT_W "&HIIDATABASE",gHiiDatabase,0,0
 
 %include "GHEADERS.i"
 

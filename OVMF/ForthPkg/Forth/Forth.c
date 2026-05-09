@@ -14,7 +14,7 @@
 #include <Protocol/LoadedImage.h>
 #include <Library/FileHandleLib.h>
 
-void fmain(void*);
+void fmain();
 
 EFI_FILE_HANDLE Volume;
 
@@ -209,7 +209,7 @@ BootManagerMenuEntry (
 
   gST->ConOut->EnableCursor(gST->ConOut, 1);
 
-  fmain( AllocatePool (0x660000) );
+  fmain();
 
   Print(L"hello!\n");
     for (;;) { }
