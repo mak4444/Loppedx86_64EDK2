@@ -3,8 +3,28 @@
 \- }> : }>  HERE OVER - SWAP OR! ;
 \- PLUCK : PLUCK 2 PICK ;
 
+[IFNDEF] ,GUID>
+: ,GUID>
+\+ LAST_GUID  HERE TO LAST_GUID
+  BASE @ HEX
+  >IN @
+  PARSE-NAME DROP 8  NUMBER? 0= THROW DROP L,
+  >IN M! '-' PARSE 2DROP
+ '-' PARSE NUMBER? 0= THROW DROP W,
+ '-' PARSE NUMBER? 0= THROW DROP W,
+ '-' PARSE NUMBER? 0= THROW DROP DUP 8 >> C, C,
+  PARSE-NAME NUMBER? 0= THROW DROP
+ DUP 8 >> DUP 8 >> DUP 8 >> DUP 8 >> DUP 8 >>
+ C, C,	C, C,	C, C, 
+
+  BASE !
+;
+[THEN]
+
 HERE \ PackageList
- 0 , 0 ,
+
+,GUID>  9fe2f616-323c-45a7-a287-dfeff517cc66 \ gHIIAddRussianFontGuid
+
 0 L, \ PackageLength
 
 HERE  $07000000 L, \ EFI_HII_PACKAGE_SIMPLE_FONTS >> 24
