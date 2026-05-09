@@ -115,9 +115,14 @@ FLOAD ForthLib/lib/syscall.4th
 
 FLOAD ForthLib/ansi/keyex.4th 
 
+1 [IF] 
+fload ForthLib\rus\KOI8UNI16.4TH
+fload ForthLib\rus\HIIAddRussianFont.4th
+[ELSE]
 FLOAD ForthLib\GOP\gop.4th 
 FLOAD ForthLib\rus\koi8.4th 
 FLOAD ForthLib\GOP\gremit.4 
+[THEN]
 FLOAD ForthLib\rus\rkey.4th
 
  REQUIRE CO ForthLib\tools\acc.4th CO
