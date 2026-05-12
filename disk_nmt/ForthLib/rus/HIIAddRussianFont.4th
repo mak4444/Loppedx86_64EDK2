@@ -23,7 +23,7 @@
 
 HERE \ PackageList
 
-,GUID>  9fe2f616-323c-45a7-a287-dfeff517cc66 \ gHIIAddRussianFontGuid
+,GUID>  9fe2f616-323c-45a7-87a2-dfeff517cc66 \ gHIIAddRussianFontGuid
 
 0 L, \ PackageLength
 
@@ -151,6 +151,5 @@ CR .( SSS=) HERE OVER - 2DUP H. H.
  DUP @ \ ->NewPackageList
  4XSYS THROW
 
-\ נעיקופ
  DP !
 
