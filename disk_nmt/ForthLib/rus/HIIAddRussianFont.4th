@@ -149,7 +149,7 @@ CR .( SSS=) HERE OVER - 2DUP H. H.
  PLUCK \ PackageList
  &HIIDATABASE @
  DUP @ \ ->NewPackageList
- 4XSYS THROW
+ 4XSYS DROP \ THROW
 
  DP !
 
