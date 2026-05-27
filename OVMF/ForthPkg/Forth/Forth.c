@@ -18,23 +18,19 @@ void fmain();
 
 EFI_FILE_HANDLE Volume;
 
-void hello(UINT64 adr)
-{
-  Print(L"Hello from Forth!!!=%llx\n",adr);
-  Print(L"Привет!\n");
-}
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiSimpleFileSystemProtocolGuid = { 0x964E5B22, 0x6459, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
+GLOBAL_REMOVE_IF_UNREFERENCED EFI_GUID gEfiDevicePathProtocolGuid = { 0x09576E91, 0x6D3F, 0x11D2, { 0x8E, 0x39, 0x00, 0xA0, 0xC9, 0x69, 0x72, 0x3B }};
 
  EFI_HANDLE LibImageHandle;
+ EFI_HANDLE *HandleList;
 
 VOID
 C_HALT( EFI_STATUS stat )
-{//	Exit(stat, 0, NULL);
-
+{
     gBS->Exit(LibImageHandle,stat, 0, NULL);
 
     // Uh oh, Exit() returned?!
     for (;;) { }
-
 }
 
 EFI_STATUS
@@ -163,7 +159,6 @@ Output (
 VOID
 putch (CHAR16 cc)
 { CHAR16 * pcc=L"*";
-//   Output (pcc);
    *pcc= cc;
    Output (pcc);
 }
@@ -185,15 +180,42 @@ EFI_FILE_HANDLE GetVolume(EFI_HANDLE image)
   return Volume;
 }
 
-/**
-  Display the boot popup menu and allow user select boot item.
+EFI_STATUS
+EFIAPI
+GCCSETVOL ( int ii )
+{
 
-  @param   ImageHandle     The image handle.
-  @param   SystemTable     The system table.
+  EFI_HANDLE  FsHandle=0;
+  EFI_SIMPLE_FILE_SYSTEM_PROTOCOL  *Fs;
+  EFI_DEVICE_PATH_PROTOCOL        *DevicePath;
+  EFI_STATUS  Status;
 
-  @retval  EFI_SUCCESS          Boot from selected boot option, and return success from boot option
+ DevicePath = DevicePathFromHandle(HandleList[ii]);
 
-**/
+  Status = gBS->LocateDevicePath (
+                  &gEfiSimpleFileSystemProtocolGuid,
+                  &DevicePath,
+                  &FsHandle
+                  );
+
+  if (EFI_ERROR (Status)) {
+   	Print(L"\nDevicePath NOT_FOUND\n");
+  return Status;
+  }
+
+  Status = gBS->HandleProtocol (FsHandle, &gEfiSimpleFileSystemProtocolGuid, (VOID **)&Fs);
+
+  if (EFI_ERROR (Status)) {
+ Print(L"\nFs err=%x\n",Status);
+  return Status;
+ }
+
+  Status = Fs->OpenVolume (Fs, &Volume);
+
+  return Status;
+
+}
+
 EFI_STATUS
 EFIAPI
 BootManagerMenuEntry (
@@ -201,17 +223,36 @@ BootManagerMenuEntry (
   IN EFI_SYSTEM_TABLE  *SystemTable
   )
 {
-
     LibImageHandle = ImageHandle;
     Volume = GetVolume(ImageHandle);
+
+  EFI_STATUS  Status;
+  HandleList          = NULL;
+  UINTN       Size=0;
 
   gBS->SetWatchdogTimer(0,0,0,NULL);
 
   gST->ConOut->EnableCursor(gST->ConOut, 1);
 
-  fmain();
+ Status = gBS->LocateHandle (ByProtocol, &gEfiSimpleFileSystemProtocolGuid, NULL, &Size, HandleList);
+    if (Status == EFI_BUFFER_TOO_SMALL) {
+      HandleList = AllocateZeroPool (Size + sizeof (EFI_HANDLE));
+      if (HandleList == NULL) {
+   	Print(L"\n AllocateZeroPool EFI_ERROR\n");
+      }
 
-  Print(L"hello!\n");
+      Status = gBS->LocateHandle (ByProtocol, &gEfiSimpleFileSystemProtocolGuid, NULL, &Size, HandleList);
+      HandleList[Size/sizeof (EFI_HANDLE)] = NULL;
+    }
+
+  if (EFI_ERROR (Status)) {
+    if (HandleList != NULL) {
+      FreePool (HandleList);
+   	Print(L"\nHandleList EFI_ERROR\n");
+    }
+  }
+
+  fmain();
     for (;;) { }
 
   return EFI_SUCCESS;

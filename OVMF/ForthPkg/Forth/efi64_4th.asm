@@ -1,9 +1,10 @@
 
-extern hello
 extern LibImageHandle
 extern gST
 extern Volume
 extern gHiiDatabase
+extern FileHandleFindFirstFile
+extern FileHandleFindNextFile
 
 %define SVIEWLINK 0
 %define DEFLAST 0
@@ -135,9 +136,6 @@ fmain:
 	call AllocatePool
 	lea  rbp, [rax+0x100000-64]
 	call FSTART
-	mov  rcx, 0x234567
-	mov  rdi, rax
-	call hello
 	pop  rbp
 	ret
 
