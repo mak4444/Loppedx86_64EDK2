@@ -16,7 +16,8 @@ CREATE FILEINFO  FILEINFO_SIZE ALLOT
 
 : DIR PARSE-NAME $DIR ;
 
- CREATE CUR_DIR 1 C, '0' C, 0 , 100 ALLOT \ CUR_DIR 100 ERASE
+ CREATE CUR_DIR 1 C, '\' C, 0 , 100 ALLOT \ CUR_DIR 100 ERASE
+\ CREATE CUR_DIR 0 C, '0' C, 0 , 100 ALLOT \ CUR_DIR 100 ERASE
 
 : $CHDIR ( adr len -- )
  DUP 0= IF 2DROP BREAK
@@ -28,54 +29,30 @@ CREATE FILEINFO  FILEINFO_SIZE ALLOT
 	      CUR_DIR COUNT + 1- C@ '\' =
 	UNTIL
   BREAK
- OVER 1+ C@ '\' = \ root
+ OVER
+ DUP  C@ '\' =
+ SWAP 1+ C@ '\' = OR
+  \ root
  IF  CUR_DIR $!
  ELSE CUR_DIR $+!                        		
  THEN
+ 0 CUR_DIR COUNT + C!
  ;
 
 CREATE vol_handles 0 ,
 CREATE vol_count 0 ,
 
-: LOCHAND ( -- flg )
-	vol_handles
-	vol_count
-	0
-	EFI_SIMPLE_FILE_SYSTEM_GUID
-	ByProtocol
-	BOOTSERV LocateHandleBuffer @ 5XSYS
-;
-
-CREATE CUR_DRIVE 0 ,
-
-: SETDRIVE ( n -- flg )
-	CUR_DRIVE
-	EFI_SIMPLE_FILE_SYSTEM_GUID
-	ROT CELLS vol_handles @ + @
-	BOOTSERV HandleProtocol @ 3XSYS
-;
-
-\- CUR_ROOT CREATE CUR_ROOT 0 ,
-
-: OPEN-VOLUME ( -- flg )
-	CUR_ROOT
-	CUR_DRIVE @
-	CUR_DRIVE @ OpenVolume @ 2XSYS
-;
-\ https://github.com/rhboot/shim/blob/main/lib/simple_file.c
-: SETROOT ( n -- flg )
- LOCHAND DUP IF BREAK DROP
-  SETDRIVE DUP IF BREAK DROP
- OPEN-VOLUME ;
-
 : >DIREFIFILENAME ( adr1 len adr -- adr )
   2 PICK 
   1+ C@ '\' =
-  IF   2 PICK C@ '0' XOR SETROOT THROW
+  IF   2 PICK C@ '0' XOR SETVOL THROW
 	>R 2- SWAP 2+ SWAP R> ASCII-UZ
   BREAK
  CUR_DIR COUNT + 1- C@ '\' <> IF '\' CUR_DIR $C+! THEN
- CUR_DIR 2+ C@ '\' = IF CUR_DIR 1+ C@ '0' XOR SETROOT DUP IF $3001 CUR_DIR W! THEN THROW THEN
+ CUR_DIR 2+ C@ '\' = 
+	IF CUR_DIR 1+ C@ '0' XOR SETVOL DUP IF $3001 CUR_DIR W! THEN THROW
+	ELSE ORIGVOLUME &VOLUME !
+	THEN
  CUR_DIR COUNT 1- SWAP 1+ SWAP ROT ASCII-UZ \  adr1 len adr
  DUP>R CUR_DIR C@ 1- 2* + ASCII-UZ DROP R> Z/TO\
  ;
@@ -84,35 +61,22 @@ CREATE CUR_DRIVE 0 ,
 
 : CD PARSE-NAME $CHDIR ;
 
-[IFNDEF] UZSIM_OPEN-FILE
-: UZSIM_OPEN-FILE ( uzadr fam -- fid flg )
-	0 SWAP ROT \ 0 fam uzadr
-	0 >R RP@
-	CUR_ROOT @ 
-	VOLUME F_Open @ 5XSYS R> SWAP
-;
-[THEN]
-
 : CD-OPEN-FILE ( c-addr u fam -- fileid ior )
  3DUP >R 2>R
  [ ' OPEN-FILE DEFER@ COMPILE, ] DUP 0= IF 2RDROP RDROP BREAK 
   2DROP
    2R> FILE-BUFF  >EFIFILENAME0
-   R>  UZOPEN-FILE
+   R>
+  &VOLUME @ >R
+  ORIGVOLUME &VOLUME !
+  ['] UZOPEN-FILE CATCH
+  R> &VOLUME !
+  THROW
+  
 ;
 
-: SM-OPEN-FILE ( c-addr u fam -- fileid ior )
- 3DUP >R 2>R
-     >R FILE-BUFF  >EFIFILENAME R>  UZSIM_OPEN-FILE
-   DUP 0= IF 2RDROP RDROP BREAK 
-  2DROP
-   2R> FILE-BUFF  >EFIFILENAME0
-   R>  UZOPEN-FILE
-;
 
-\ ' CD-OPEN-FILE TO OPEN-FILE
-
-' SM-OPEN-FILE TO OPEN-FILE
+' CD-OPEN-FILE TO OPEN-FILE
 
 [IFNDEF] $MKDIR
 
@@ -122,8 +86,8 @@ CREATE CUR_DRIVE 0 ,
 	R/W >CREATE
 	ROT \ atr fam uzadr
 	0 >R RP@
-	VOLUME \ CUR_ROOT @ 
-	VOLUME F_Open @ 5XSYS THROW R>
+	&VOLUME @ \ CUR_ROOT @ 
+	DUP F_Open @ 5XSYS THROW R>
 	CLOSE-FILE DROP ;
 
 [THEN]
