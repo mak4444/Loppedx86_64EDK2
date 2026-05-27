@@ -2,7 +2,7 @@
 
 &IMAGEHANDLE @ CONSTANT IMAGEHANDLE
 \- SYSTAB &SYSTAB @ CONSTANT SYSTAB
-\- VOLUME &VOLUME @ CONSTANT VOLUME
+&VOLUME @ CONSTANT ORIGVOLUME
 
 \- REQUIRED : REQUIRED ( waddr wu laddr lu -- )
 \- REQUIRED  2SWAP  SFIND  IF DROP 2DROP EXIT  ELSE 2DROP  INCLUDED THEN ;
@@ -15,7 +15,7 @@
  ERRFILENAME 0!
  REQUIRE VIEWS_SEARCH ForthLib\tools\defview.4th 
 
-3 VALUE COLOR@
+$b VALUE COLOR@
 : S_COLOR!  DUP  [ ' COLOR! DEFER@ COMPILE, ] 
  TO COLOR@ ;
 
@@ -27,7 +27,7 @@
 \- EFI_GREEN  2 CONSTANT EFI_GREEN 
 \- EFI_RED    4 CONSTANT EFI_RED
 \- EFI_BRIGHT 8 CONSTANT EFI_BRIGHT   
-: >BG 4 << ; 3 COLOR! 
+: >BG 4 << ; $b COLOR! 
 
  REQUIRE EFI_ERROR_DO ForthLib\ext\error.4th 
 
@@ -148,8 +148,9 @@ REQUIRE FCOPY ForthLib\tools\fcopy.4th
 [IFNDEF] DELETE-FILE
 : DELETE-FILE ( c-addr u -- ior )
   R/W OPEN-FILE DUP IF BREAK DROP
-  VOLUME F_Delete @ 1XSYS ;
+  &VOLUME @ F_Delete @ 1XSYS ;
 [THEN]
+
 
 REQUIRE NC ForthLib\tools\NNC.4th
 REQUIRE EFICALL ForthLib\lib\eficall.4th 
@@ -162,7 +163,9 @@ REQUIRE EFICALL ForthLib\lib\eficall.4th
 ." SEE ( <name> ) - disasm" CR
 ." DISA ( addr -- ) - disasm" CR
 ." NC - file manager"  CR
-; ->DEFER HELP              
+; ->DEFER HELP
+
+CD 0\
 
 LASTSTP: CUR_DIR 44 dump
 LASTSTP: BASETXT_MOD
@@ -179,15 +182,10 @@ LASTSTP: SYSTAB ST*CONOUT @ IO*Mode @ tm.Mode @
 LASTSTP: EFICALL RedHatBin\bltgrid.efi
 LASTSTP: e> see 
 LASTSTP: DIR ForthSrc 
+LASTSTP: EFICALL app/Shell.efi 
+LASTSTP: PAGE
+LASTSTP: bye
 
+.( TRY) CR HELP
 
-.( TRY) CR
-.( SEE ABS) CR
-.( ' +  DISA  \ Esc - quit anyother - continue ) CR
-.( CD 1\ \ change directory. 1 - nunber of disk)  CR
-.( NC \ file manager)  CR
-.( E> SEE  \ in EDIT f11 hyperlink, f12 return ) CR   
-.( EFICALL RedHatBin\bltgrid.efi \ ELF file run) CR
-
-\ dsdsdsd
 
