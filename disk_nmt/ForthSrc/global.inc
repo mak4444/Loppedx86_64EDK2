@@ -19,7 +19,7 @@ extern GCCTEXT_OUTPUT_MODE
 extern GCCOUTPUTRESET
 extern GCCSCRSIZE
 extern GCCFileSize
-
+extern GCCSETVOL
 
 
 
