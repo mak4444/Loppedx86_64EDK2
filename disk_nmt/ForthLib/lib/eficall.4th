@@ -1,5 +1,42 @@
 
 
+[IFNDEF] SETROOT
+
+: LOCHAND ( -- flg )
+	vol_handles
+	vol_count
+	0
+	EFI_SIMPLE_FILE_SYSTEM_GUID
+	ByProtocol
+	BOOTSERV LocateHandleBuffer @ 5XSYS
+;
+
+CREATE CUR_DRIVE 0 ,
+
+: SETDRIVE ( n -- flg )
+	CUR_DRIVE
+	EFI_SIMPLE_FILE_SYSTEM_GUID
+	ROT CELLS vol_handles @ + @
+	BOOTSERV HandleProtocol @ 3XSYS
+;
+
+\- CUR_ROOT CREATE CUR_ROOT 0 ,
+
+: OPEN-VOLUME ( -- flg )
+	CUR_ROOT
+	CUR_DRIVE @
+	CUR_DRIVE @ OpenVolume @ 2XSYS
+;
+\ https://github.com/rhboot/shim/blob/main/lib/simple_file.c
+: SETROOT ( n -- flg )
+ LOCHAND DUP IF BREAK DROP
+  SETDRIVE DUP IF BREAK DROP
+ OPEN-VOLUME ;
+
+
+[THEN]
+
+
 : USCAN ( c-addr1 u1 w --- c-addr2 u2 )
 \ Find the first occurrence of unicode character c in the string c-addr1 u1
 \ c-addr2 u2 is the remaining part of the string starting with that uchar.
@@ -68,6 +105,7 @@ VARIABLE DEV_HEAD
 VARIABLE LOADHANDLE
 
 : SETDEVICE ( n -- flg )
+  DUP SETROOT THROW
   DEV_PATH
   EFI_DEVICE_PATH_PROTOCOL_GUID
   ROT CELLS vol_handles @ + @		BOOTSERV HandleProtocol @ 3XSYS
@@ -121,4 +159,7 @@ CREATE nnnwww 1 ,
  THROW
 ;
 
-: EFICALL PARSE-NAME $EFICALL ; 
+: EFICALL
+ 0 SETROOT DROP
+ PARSE-NAME $EFICALL
+; 
