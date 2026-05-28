@@ -289,14 +289,33 @@ forthos:
 	make -f OVMF/ForthPkg/Forth/GNUmakefile
 	cp OVMF/ForthPkg/Forth/ff/Forth.efi disk_nmt/EFI/BOOT/bootx64.efi
 
-#	cp OVMF/ForthPkg/Forth/ff/Forth.efi disk_nmt/work/bootx64.efi
-
-
-cccc:
-	cd OVMF/BaseTools/Source/C/GenFw;make clean; cd ../../../../../
-
-ww:
-	cd OVMF/BaseTools/Source/C/GenFw;make; cd ../../../../../
+# for VirtualBox
+efiboot.iso:
+	dd if=/dev/zero of=$@ bs=512 count=2880
+	mkfs.msdos -F 12 -n "EFIBOOT" $@
+	mcopy -i $@ disk_nmt/autoexec.4th  ::autoexec.4th
+	mmd -i $@ ::EFI
+	mmd -i $@ ::EFI/BOOT
+	mcopy -i $@ disk_nmt/EFI/BOOT/bootx64.efi  ::EFI/BOOT/bootx64.efi
+	mmd -i $@ ::ForthLib
+	mmd -i $@ ::ForthLib/tools
+	mcopy -i $@ disk_nmt/ForthLib/tools/*  ::ForthLib/tools/
+	mmd -i $@ ::ForthLib/ext
+	mcopy -i $@ disk_nmt/ForthLib/ext/*  ::ForthLib/ext/
+	mmd -i $@ ::ForthLib/asm
+	mcopy -i $@ disk_nmt/ForthLib/asm/*  ::ForthLib/asm/
+	mmd -i $@ ::ForthLib/spf
+	mcopy -i $@ disk_nmt/ForthLib/spf/*  ::ForthLib/spf/
+	mmd -i $@ ::ForthLib/lib
+	mcopy -i $@ disk_nmt/ForthLib/lib/*  ::ForthLib/lib/
+	mmd -i $@ ::ForthLib/include
+	mcopy -i $@ disk_nmt/ForthLib/include/*  ::ForthLib/include/
+	mmd -i $@ ::ForthLib/ansi
+	mcopy -i $@ disk_nmt/ForthLib/ansi/*  ::ForthLib/ansi/
+	mmd -i $@ ::ForthLib/rus
+	mcopy -i $@ disk_nmt/ForthLib/rus/*  ::ForthLib/rus/
+	mmd -i $@ ::ForthSrc
+	mcopy -i $@ disk_nmt/ForthSrc/*  ::ForthSrc/
 
 clean:
 	$(RM) -r OVMF/BaseTools/Source/C/bin
