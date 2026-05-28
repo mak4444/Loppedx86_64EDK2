@@ -26,3 +26,10 @@ building of a local ForthOS
 ```
 make forthos
 ```
+
+building for VirtualBox
+
+```
+make efiboot.iso
+```
+efiboot.iso - optical disc IDE
