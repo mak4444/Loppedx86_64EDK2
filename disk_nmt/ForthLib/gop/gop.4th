@@ -42,3 +42,7 @@ DROP
  &GOP @ GR_Mode @ GM_FrameBufferBase @ VALUE GR_BASE_ADDRES
  &GOP @ GR_Mode @ GM_Info @ HorizontalResolution L@ VALUE GR_WIDTH
  &GOP @ GR_Mode @ GM_Info @ VerticalResolution L@ VALUE GR_HEIGHT
+
+: GOPMODE! ( n -- )
+  &GOP @ DUP GR_SetMode @ 2XSYS THROW
+;
