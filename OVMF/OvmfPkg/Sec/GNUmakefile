@@ -67,6 +67,7 @@ $(MODULE_DIR)/SecMain/AutoGen.obj: $(MODULE_DIR)/SecMain/AutoGen.c
 
 clean:
 	$(RM) $(MODULE_DIR)/SecMain/SecMain.*
+	$(RM) $(MODULE_DIR)/SecMain/X64/*.obj
 	$(RM) $(MODULE_DIR)/SecMain/*.obj
 	$(RM) $(MODULE_DIR)/SecMain/*.deps
 	$(RM) $(MODULE_DIR)/SecMain/*.map
