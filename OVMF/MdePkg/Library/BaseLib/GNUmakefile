@@ -127,5 +127,6 @@ $(MODULE_DIR)/ff/Non-existing.obj: $(MODULE_DIR)/X64/Non-existing.c
 
 clean:
 	$(RM) $(MODULE_DIR)/ff/$(MODULE_NAME).*
+	$(RM) $(MODULE_DIR)/ff/X64/*.obj
 	$(RM) $(MODULE_DIR)/ff/*.obj
 	$(RM) $(MODULE_DIR)/ff/*.deps
