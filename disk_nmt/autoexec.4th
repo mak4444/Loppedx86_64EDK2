@@ -156,6 +156,9 @@ REQUIRE FCOPY ForthLib\tools\fcopy.4th
 REQUIRE NC ForthLib\tools\NNC.4th
 REQUIRE EFICALL ForthLib\lib\eficall.4th 
 
+\ REQUIRE SER_DO ForthLib\tools\serial.4th
+REQUIRE OPTIONS_DO ForthLib\tools\options.4th
+
 :NONAME
 ." WORDS -  List the definition names" CR
 ." EDIT ( <filename> ) - text editor" CR
@@ -181,11 +184,14 @@ LASTSTP: SYSTAB ST*CONOUT @ IO*Mode @ tm.Mode @
  LASTSTP: fload work\asmtst.4th 
  LASTSTP: ' GCCOUTPUTRESET DISA 
 LASTSTP: EFICALL RedHatBin\bltgrid.efi
-LASTSTP: e> see 
-LASTSTP: DIR ForthSrc 
-LASTSTP: EFICALL app/Shell.efi 
+LASTSTP: e> see
+LASTSTP: DIR ForthSrc
+LASTSTP: EFICALL app/Shell.efi
+LASTSTP: SER> ' + 22 DUMP
 LASTSTP: PAGE
 LASTSTP: bye
+
+\+ OPTIONS_DO OPTIONS_DO
 
 .( TRY) CR HELP
 
