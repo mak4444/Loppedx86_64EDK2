@@ -1,0 +1,10 @@
+#!/bin/sh
+args=()
+for a in "$@"; do
+  [ "$a" = "-Werror" ] && a="-Wno-error"
+  args+=("$a")
+done
+case "$PWD" in
+  *BaseTools/Source/C*) exec /usr/bin/gcc "${args[@]}" ;;
+  *) exec x86_64-elf-gcc "${args[@]}" ;;
+esac

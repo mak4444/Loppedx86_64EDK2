@@ -7,9 +7,18 @@
 #include <cstring>
 #include <sstream>
 #include <fstream>
+#ifdef __linux__
 #include <linux/types.h>
+#else
+typedef unsigned char __u8;
+typedef unsigned short __u16;
+typedef unsigned int __u32;
+typedef unsigned long long __u64;
+#endif
 #include <vector>
+#if !defined(__MSYS__) && !defined(__CYGWIN__)
 #include <curses.h>
+#endif
 
 #include <termios.h>
 

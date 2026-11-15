@@ -280,9 +280,17 @@ BUILD_LIB:
 	make -f OVMF/MdeModulePkg/Library/DxeCapsuleLibNull/GNUmakefile
 	make -f OVMF/MdeModulePkg/Library/CustomizedDisplayLib/GNUmakefile
 
+ifeq ($(OS),Windows_NT)
+QEMU = "/c/Program Files/qemu/qemu-system-x86_64.exe"
+QEMU_ACCEL = -accel whpx -accel tcg
+else
+QEMU = qemu-system-x86_64
+QEMU_ACCEL = -enable-kvm
+endif
+
 run:
-	qemu-system-x86_64  -bios ./OVMF.fd \
- -serial stdio -enable-kvm \
+	$(QEMU)  -bios ./OVMF.fd \
+ -serial stdio $(QEMU_ACCEL) \
  -hda fat:rw:./disk_nmt -hdb  fat:rw:./Meta_x86_64
 
 forthos:
