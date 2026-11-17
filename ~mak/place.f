@@ -1,7 +1,5 @@
 \ Maksimov M.O. 
 
-REQUIRE [IFNDEF] ~nn/lib/ifdef.f
-
 [IFNDEF] MAX$@ 0xFF CONSTANT MAX$@   \ maximum length of contents of a counted string
 [THEN]
 

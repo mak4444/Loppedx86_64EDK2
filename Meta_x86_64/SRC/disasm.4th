@@ -1,5 +1,3 @@
-REQUIRE [IF] ~mak/CompIF3.f
-REQUIRE [IFNDEF] ~nn/lib/ifdef.f
 REQUIRE $!  ~mak/place.f
 \ REQUIRE CASE lib/ext/case.f
 REQUIRE CASE Meta_x86_64/SRC/case.4 

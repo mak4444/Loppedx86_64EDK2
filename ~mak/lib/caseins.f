@@ -1,7 +1,5 @@
 ( CASE-INS - case sensitivity switcher )
 
-REQUIRE CEQUAL-U lib/ext/caseins-tools.f 
-
 VARIABLE CASE-INS \ switcher
 CASE-INS ON
 

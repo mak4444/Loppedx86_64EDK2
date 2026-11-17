@@ -1,6 +1,5 @@
 
 REQUIRE [IF] ~mak/CompIF4.f
-REQUIRE [IFNDEF] ~nn/lib/ifdef.f
 \ REQUIRE _INF_MOD ~mak/infix3.f 
 
 [IFNDEF] /STRING : /STRING DUP >R - SWAP R> + SWAP ;

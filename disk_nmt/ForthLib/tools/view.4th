@@ -2,9 +2,7 @@ CR .( S" VIEW" *INCL )
 \+ TR2SEE ' TR2SEE TO 'TR4BR
 \+ NGRCR ' NGRCR	TO CR
 
-REQUIRE [IF]            ~MAK\CompIF1.f
 REQUIRE CASE            ~MAK\case.f
-REQUIRE [IFNDEF]        ~nn\lib\ifdef.f
 
 \- $VIEW	DEFER $VIEW ' 2DROP TO $VIEW
 \- $EDIT	DEFER $EDIT ' 2DROP TO $EDIT

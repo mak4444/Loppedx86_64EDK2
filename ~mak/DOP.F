@@ -1,9 +1,8 @@
-REQUIRE [IF] ~MAK\CompIF3.f
 
 \- H. : H.  BASE @ HEX SWAP U. BASE !  ;
 
 : .COPX DUP  C@  H. ." XOR OR \ " INST
-  ( DROP)  \ пускай гадят, может понадобится
+  ( DROP)  \ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
  ;
 
 : .COP0 CR ." OP0@ C@ " OP0 @ .COPX ;

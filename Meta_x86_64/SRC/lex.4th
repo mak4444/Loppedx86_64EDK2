@@ -1,6 +1,4 @@
 
-REQUIRE GASM64_MOD ~mak\ARM7\SRC\gasm64.4th
-
 REQUIRE NUMBER? ~mak\LIB\fpcnum.f 
 
 [IFNDEF]   SCAN

@@ -1,8 +1,5 @@
-REQUIRE [IF] ~mak/CompIF1.f
-REQUIRE [IFNDEF] ~nn\lib\ifdef.f
-
 [IFNDEF] CSP
-VARIABLE CSP    \ Указатель стека контроля
+VARIABLE CSP    \ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 [THEN]
 
 [IFNDEF] ?CSP
