@@ -715,6 +715,7 @@
     94                              <1>     ; valid, the contents of ECX and EDX will match the memory location.
     95                              <1>     ;
     96 00000287 390C250CB08000      <1>     cmp     dword[SEV_ES_WORK_AREA_RDRAND], ecx
+    96          ******************  <1>  warning: implicit DEFAULT ABS is deprecated [-w+implicit-abs-deprecated]
     97 0000028E 7515                <1>     jne     SevEncBitHlt
     98 00000290 39142510B08000      <1>     cmp     dword[SEV_ES_WORK_AREA_RDRAND + 4], edx
     99 00000297 750C                <1>     jne     SevEncBitHlt

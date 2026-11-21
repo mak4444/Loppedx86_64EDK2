@@ -15,7 +15,6 @@ MODULE_DIR = OVMF/OvmfPkg/PlatformPei
 INC = \
  -I$(MODULE_DIR)/ff \
  -IOVMF/OvmfPkg/Include \
- -IOVMF/SecurityPkg/Include \
  -IOVMF/UefiCpuPkg/Include \
  -IOVMF/MdePkg/Include \
  -IOVMF/MdePkg/Include/X64

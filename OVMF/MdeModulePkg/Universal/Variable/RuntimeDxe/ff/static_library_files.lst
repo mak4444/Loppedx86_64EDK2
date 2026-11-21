@@ -24,7 +24,7 @@ OVMF/MdePkg/Library/BaseSynchronizationLib/ff/BaseSynchronizationLib.lib
 OVMF/MdePkg/Library/UefiRuntimeLib/ff/UefiRuntimeLib.lib
 OVMF/MdePkg/Library/DxeServicesTableLib/ff/DxeServicesTableLib.lib
 OVMF/MdePkg/Library/UefiDriverEntryPoint/ff/UefiDriverEntryPoint.lib
-OVMF/SecurityPkg/Library/DxeTpmMeasurementLib/ff/DxeTpmMeasurementLib.lib
+OVMF/MdeModulePkg/Library/TpmMeasurementLibNull/ff/TpmMeasurementLibNull.lib
 OVMF/MdeModulePkg/Library/AuthVariableLibNull/ff/AuthVariableLibNull.lib
 OVMF/MdeModulePkg/Library/VarCheckLib/ff/VarCheckLib.lib
 OVMF/MdeModulePkg/Library/BaseVariableFlashInfoLib/ff/BaseVariableFlashInfoLib.lib

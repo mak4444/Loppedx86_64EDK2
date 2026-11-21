@@ -239,7 +239,7 @@ BUILD_LIB:
 	make -f OVMF/UefiCpuPkg/Library/MtrrLib/GNUmakefile 
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/PeiCpuExceptionHandlerLib/GNUmakefile
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/GNUmakefile
-	make -f OVMF/SecurityPkg/Library/PeiTpmMeasurementLib/GNUmakefile
+	make -f OVMF/MdeModulePkg/Library/TpmMeasurementLibNull/GNUmakefile
 	make -f OVMF/MdePkg/Library/BasePcdLibNull/GNUmakefile
 	make -f OVMF/MdePkg/Library/UefiDevicePathLib/GNUmakefile
 	make -f OVMF/MdePkg/Library/DxeCoreEntryPoint/GNUmakefile
@@ -258,7 +258,6 @@ BUILD_LIB:
 	make -f OVMF/MdeModulePkg/Library/VarCheckLib/GNUmakefile
 	make -f OVMF/MdeModulePkg/Library/BaseVariableFlashInfoLib/GNUmakefile
 	make -f OVMF/MdeModulePkg/Library/VariablePolicyLib/GNUmakefile
-	make -f OVMF/SecurityPkg/Library/DxeTpmMeasurementLib/GNUmakefile
 	make -f OVMF/MdePkg/Library/PeiExtractGuidedSectionLib/GNUmakefile
 	make -f OVMF/OvmfPkg/Library/BaseMemEncryptTdxLib/GNUmakefile
 	make -f OVMF/OvmfPkg/Library/PciHostBridgeUtilityLib/GNUmakefile
@@ -480,7 +479,7 @@ clean:
 	make -f OVMF/UefiCpuPkg/Library/MtrrLib/GNUmakefile clean
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/PeiCpuExceptionHandlerLib/GNUmakefile clean
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/GNUmakefile clean
-	make -f OVMF/SecurityPkg/Library/PeiTpmMeasurementLib/GNUmakefile clean
+	make -f OVMF/MdeModulePkg/Library/TpmMeasurementLibNull/GNUmakefile clean
 	make -f OVMF/MdePkg/Library/BasePcdLibNull/GNUmakefile clean
 	make -f OVMF/MdePkg/Library/UefiDevicePathLib/GNUmakefile clean
 	make -f OVMF/MdePkg/Library/DxeCoreEntryPoint/GNUmakefile clean
@@ -499,7 +498,6 @@ clean:
 	make -f OVMF/MdeModulePkg/Library/VarCheckLib/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Library/BaseVariableFlashInfoLib/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Library/VariablePolicyLib/GNUmakefile clean
-	make -f OVMF/SecurityPkg/Library/DxeTpmMeasurementLib/GNUmakefile clean
 	make -f OVMF/MdePkg/Library/PeiExtractGuidedSectionLib/GNUmakefile clean
 	make -f OVMF/OvmfPkg/Library/BaseMemEncryptTdxLib/GNUmakefile clean
 	make -f OVMF/OvmfPkg/Library/HardwareInfoLib/DxeHardwareInfoLib/GNUmakefile clean

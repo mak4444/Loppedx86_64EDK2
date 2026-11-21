@@ -18,8 +18,7 @@ INC = \
  -IOVMF/MdeModulePkg/Include \
  -IOVMF/MdePkg/Include \
  -IOVMF/MdePkg/Include/X64 \
- -IOVMF/SourceLevelDebugPkg/Include \
- -IOVMF/SecurityPkg/Include
+ -IOVMF/SourceLevelDebugPkg/Include
 
 RM = rm -f
 

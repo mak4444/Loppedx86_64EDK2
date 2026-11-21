@@ -20,7 +20,7 @@ INC = \
  -IOVMF/MdePkg/Include \
  -IOVMF/MdePkg/Include/X64 \
  -IOVMF/MdeModulePkg/Include \
- -IOVMF/SecurityPkg/Include \
+ -IOVMF/OvmfPkg/Include \
  -IOVMF/CryptoPkg/Include
 
 RM = rm -f

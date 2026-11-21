@@ -1,1 +1,42 @@
+;extern FORTH-WORDLIST
 
+FORTHsubWORDLIST:
+;/*	jmp	FORTHsubWORDLIST+0x5 	; 80c04166 
+	DB 0xE9,0x0,0x0,0x0,0x0
+	ret		; 80c0416b c3 
+;extern VOC-LIST
+
+
+VOCsubLIST:
+;/*	jmp	VOCsubLIST+0x5 	; 80c0416c 
+	DB 0xE9,0x0,0x0,0x0,0x0
+	ret		; 80c04171 c3 
+;extern CONTEXT
+
+
+CONTEXT:
+;/*	jmp	CONTEXT+0x5 	; 80c04172 
+	DB 0xE9,0x0,0x0,0x0,0x0
+	ret		; 80c04177 c3 
+;extern CURRENT
+
+
+CURRENT:
+;/*	jmp	CURRENT+0x5 	; 80c04178 
+	DB 0xE9,0x0,0x0,0x0,0x0
+	ret		; 80c0417d c3 
+;extern CONTEXT_SIZE
+
+
+CONTEXT_SIZE:
+;/*	jmp	CONTEXT_SIZE+0x5 	; 80c0417e 
+	DB 0xE9,0x0,0x0,0x0,0x0
+	ret		; 80c04183 c3 
+;extern ORIGVIEWLINK
+
+
+ORIGVIEWLINK:
+;/*	jmp	ORIGVIEWLINK+0x5 	; 80c04184 
+	DB 0xE9,0x0,0x0,0x0,0x0
+	ret		; 80c04189 c3 
+;
