@@ -1,2 +1,3 @@
 OVMF/OvmfPkg/IntelTdx/TdxMeasurementLib/ff/SecPeiTdxMeasurement.obj
 OVMF/OvmfPkg/IntelTdx/TdxMeasurementLib/ff/TdxMeasurementCommon.obj
+OVMF/OvmfPkg/IntelTdx/TdxMeasurementLib/ff/Sha384.obj

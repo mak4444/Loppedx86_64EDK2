@@ -313,12 +313,6 @@ AcpiTimerLibConstructor (
 
 RETURN_STATUS
 EFIAPI
-OpensslLibConstructor (
-  VOID
-  );
-
-RETURN_STATUS
-EFIAPI
 LzmaDecompressLibConstructor (
   VOID
   );
@@ -336,9 +330,6 @@ ProcessLibraryConstructorList (
   ASSERT_RETURN_ERROR (Status);
 
   Status = AcpiTimerLibConstructor ();
-  ASSERT_RETURN_ERROR (Status);
-
-  Status = OpensslLibConstructor ();
   ASSERT_RETURN_ERROR (Status);
 
   Status = LzmaDecompressLibConstructor ();

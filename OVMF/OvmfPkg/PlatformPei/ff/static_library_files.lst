@@ -24,12 +24,10 @@ OVMF/MdePkg/Library/BasePciLibCf8/ff/BasePciLibCf8.lib
 OVMF/OvmfPkg/Library/AcpiTimerLib/BaseAcpiTimerLib/BaseAcpiTimerLib.lib
 OVMF/MdeModulePkg/Library/TpmMeasurementLibNull/ff/TpmMeasurementLibNull.lib
 OVMF/MdePkg/Library/BaseSynchronizationLib/ff/BaseSynchronizationLib.lib
-OVMF/CryptoPkg/Library/IntrinsicLib/ff/BaseIntrinsicLib.lib
-OVMF/CryptoPkg/Library/OpensslLib/ff/OpensslLibCrypto.lib
+OVMF/MdePkg/Library/BaseIntrinsicLib/ff/BaseIntrinsicLib.lib
 OVMF/OvmfPkg/Library/QemuFwCfgLib/QemuFwCfgPeiLib/QemuFwCfgPeiLib.lib
 OVMF/PcAtChipsetPkg/Library/SerialIoLib/ff/PcAtSerialPortLib.lib
 OVMF/MdePkg/Library/BasePeCoffGetEntryPointLib/ff/BasePeCoffGetEntryPointLib.lib
-OVMF/CryptoPkg/Library/BaseCryptLib/PeiCryptLib/PeiCryptLib.lib
 OVMF/MdePkg/Library/StackCheckLibNull/ff/StackCheckLibNull.lib
 OVMF/OvmfPkg/Library/HardwareInfoLib/ff/PeiHardwareInfoLib.lib
 OVMF/UefiCpuPkg/Library/MtrrLib/ff/MtrrLib.lib

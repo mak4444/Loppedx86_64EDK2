@@ -165,8 +165,6 @@ BUILD_LIB:
 	make -f OVMF/MdePkg/Library/BasePciLibCf8/GNUmakefile
 	make -f OVMF/OvmfPkg/Library/AcpiTimerLib/GNUmakefile
 	make -f OVMF/OvmfPkg/Library/AcpiTimerLib/BaseAcpiTimerLib/GNUmakefile
-	make -f OVMF/CryptoPkg/Library/OpensslLib/GNUmakefile
-	make -f OVMF/CryptoPkg/Library/BaseCryptLib/GNUmakefile
 	make -f OVMF/MdePkg/Library/BaseSynchronizationLib/GNUmakefile
 	make -f OVMF/MdeModulePkg/Library/DebugAgentLibNull/GNUmakefile
 	make -f OVMF/MdePkg/Library/BaseSafeIntLib/GNUmakefile
@@ -234,9 +232,8 @@ BUILD_LIB:
 	make -f OVMF/MdePkg/Library/BaseCacheMaintenanceLib/GNUmakefile
 	make -f OVMF/MdePkg/Library/PeiResourcePublicationLib/GNUmakefile
 	make -f OVMF/MdePkg/Library/PeimEntryPoint/GNUmakefile
-	make -f OVMF/CryptoPkg/Library/IntrinsicLib/GNUmakefile
-	make -f OVMF/CryptoPkg/Library/BaseCryptLib/PeiCryptLib/GNUmakefile
-	make -f OVMF/UefiCpuPkg/Library/MtrrLib/GNUmakefile 
+	make -f OVMF/MdePkg/Library/BaseIntrinsicLib/GNUmakefile
+	make -f OVMF/UefiCpuPkg/Library/MtrrLib/GNUmakefile
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/PeiCpuExceptionHandlerLib/GNUmakefile
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/GNUmakefile
 	make -f OVMF/MdeModulePkg/Library/TpmMeasurementLibNull/GNUmakefile
@@ -406,8 +403,6 @@ clean:
 	make -f OVMF/MdePkg/Library/BasePciLibCf8/GNUmakefile clean
 	make -f OVMF/OvmfPkg/Library/AcpiTimerLib/GNUmakefile clean
 	make -f OVMF/OvmfPkg/Library/AcpiTimerLib/BaseAcpiTimerLib/GNUmakefile clean
-	make -f OVMF/CryptoPkg/Library/OpensslLib/GNUmakefile clean
-	make -f OVMF/CryptoPkg/Library/BaseCryptLib/GNUmakefile clean
 	make -f OVMF/MdePkg/Library/BaseSynchronizationLib/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Library/DebugAgentLibNull/GNUmakefile clean
 	make -f OVMF/MdePkg/Library/BaseSafeIntLib/GNUmakefile clean
@@ -474,8 +469,7 @@ clean:
 	make -f OVMF/MdePkg/Library/BaseCacheMaintenanceLib/GNUmakefile clean
 	make -f OVMF/MdePkg/Library/PeiResourcePublicationLib/GNUmakefile  clean
 	make -f OVMF/MdePkg/Library/PeimEntryPoint/GNUmakefile  clean
-	make -f OVMF/CryptoPkg/Library/IntrinsicLib/GNUmakefile clean
-	make -f OVMF/CryptoPkg/Library/BaseCryptLib/PeiCryptLib/GNUmakefile clean
+	make -f OVMF/MdePkg/Library/BaseIntrinsicLib/GNUmakefile clean
 	make -f OVMF/UefiCpuPkg/Library/MtrrLib/GNUmakefile clean
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/PeiCpuExceptionHandlerLib/GNUmakefile clean
 	make -f OVMF/UefiCpuPkg/Library/CpuExceptionHandlerLib/DxeCpuExceptionHandlerLib/GNUmakefile clean

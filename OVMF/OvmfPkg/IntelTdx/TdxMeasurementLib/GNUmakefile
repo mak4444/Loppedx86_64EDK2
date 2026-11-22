@@ -20,8 +20,7 @@ INC = \
  -IOVMF/MdePkg/Include \
  -IOVMF/MdePkg/Include/X64 \
  -IOVMF/MdeModulePkg/Include \
- -IOVMF/OvmfPkg/Include \
- -IOVMF/CryptoPkg/Include
+ -IOVMF/OvmfPkg/Include
 
 RM = rm -f
 
@@ -31,7 +30,8 @@ all: $(eval export PATH = $(PATH):$(WORKSPACE)/BaseTools:$(WORKSPACE)/.) $(MODUL
  
 $(MODULE_DIR)/ff/$(MODULE_NAME).lib: \
  $(MODULE_DIR)/ff/SecPeiTdxMeasurement.obj \
- $(MODULE_DIR)/ff/TdxMeasurementCommon.obj 
+ $(MODULE_DIR)/ff/TdxMeasurementCommon.obj \
+ $(MODULE_DIR)/ff/Sha384.obj 
 	rm -f $@
 	gcc-ar cr $@ @$(MODULE_DIR)/ff/object_files.lst
 
