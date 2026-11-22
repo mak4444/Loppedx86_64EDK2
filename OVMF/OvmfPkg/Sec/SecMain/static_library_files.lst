@@ -15,8 +15,6 @@ OVMF/OvmfPkg/Library/PlatformDebugLibIoPort/ff/PlatformRomDebugLibIoPort.lib
 OVMF/MdePkg/Library/BasePciCf8Lib/ff/BasePciCf8Lib.lib
 OVMF/MdePkg/Library/BasePciLibCf8/ff/BasePciLibCf8.lib
 OVMF/OvmfPkg/Library/AcpiTimerLib/ff/BaseRomAcpiTimerLib.lib
-OVMF/CryptoPkg/Library/OpensslLib/ff/OpensslLibCrypto.lib
-OVMF/CryptoPkg/Library/BaseCryptLib/ff/SecCryptLib.lib
 OVMF/MdePkg/Library/BaseSynchronizationLib/ff/BaseSynchronizationLib.lib
 OVMF/MdeModulePkg/Library/DebugAgentLibNull/ff/DebugAgentLibNull.lib
 OVMF/MdePkg/Library/BaseSafeIntLib/ff/BaseSafeIntLib.lib

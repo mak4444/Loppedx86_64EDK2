@@ -1,3 +1,0 @@
-OVMF/CryptoPkg/Library/IntrinsicLib/ff/MemoryIntrinsics.obj
-OVMF/CryptoPkg/Library/IntrinsicLib/ff/CopyMem.obj
-OVMF/CryptoPkg/Library/IntrinsicLib/ff/Math.obj

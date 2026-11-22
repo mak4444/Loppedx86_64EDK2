@@ -11,7 +11,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 #include <Library/PeiServicesLib.h>
 #include <Library/TdxLib.h>
 #include <Library/BaseMemoryLib.h>
-#include <Library/BaseCryptLib.h>
+#include "Sha384.h"
 #include <Library/TdxMeasurementLib.h>
 
 /**

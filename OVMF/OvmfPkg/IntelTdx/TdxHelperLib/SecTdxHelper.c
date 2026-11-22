@@ -11,7 +11,6 @@
 #include <Library/BaseLib.h>
 #include <Library/DebugLib.h>
 #include <Library/HobLib.h>
-#include <Library/BaseCryptLib.h>
 #include <Library/BaseMemoryLib.h>
 #include <IndustryStandard/Tdx.h>
 #include <IndustryStandard/IntelTdx.h>
