@@ -1,4 +1,0 @@
-OVMF/OvmfPkg/Sec/SecMain/SecMain.obj
-OVMF/OvmfPkg/Sec/SecMain/AmdSev.obj
-OVMF/OvmfPkg/Sec/SecMain/SecEntry.obj
-OVMF/OvmfPkg/Sec/SecMain/AutoGen.obj

@@ -1,0 +1,3 @@
+OVMF/UefiCpuPkg/SecCore/SecMain/SecMain.obj
+OVMF/UefiCpuPkg/SecCore/SecMain/SecEntry.obj
+OVMF/UefiCpuPkg/SecCore/SecMain/AutoGen.obj
