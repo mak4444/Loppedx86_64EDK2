@@ -78,10 +78,10 @@ OVMF/FVMAIN_COMPACT.guided.dummy: OVMF/SECFV.Fv OVMF/PEIFV.Fv OVMF/DXEFV.Fv
 OVMF/PEIFV.Fv: Meta_x86_64/MetaForth $(PEI4TH)
 	Meta_x86_64/MetaForth "FLOAD MLibs.4 FLOAD PEIFV.4th BYE"
 
-OVMF/DXEFV.Fv: Meta_x86_64/MetaForth $(DEX4TH)
+OVMF/DXEFV.Fv: Meta_x86_64/MetaForth DXEFV.4th $(DEX4TH)
 	Meta_x86_64/MetaForth "FLOAD MLibs.4 FLOAD DXEFV.4th BYE"
 
-OVMF/SECFV.Fv: Meta_x86_64/MetaForth $(SEC4TH)
+OVMF/SECFV.Fv: Meta_x86_64/MetaForth SECFV.4th $(SEC4TH)
 	Meta_x86_64/MetaForth "FLOAD MLibs.4 FLOAD SECFV.4th BYE"
 
 GenFw: ../libs/libCommon.a

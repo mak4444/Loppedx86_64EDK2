@@ -6,7 +6,7 @@ ALSO TC DEFINITIONS
 
 OVMF/PeImage.4th
 OVMF/GenPPS.4th
-0x24	VALUE NumBlocks
+0x4	VALUE NumBlocks
 0x1000	VALUE LengthBlock
 OVMF/GenFv.4th
 
