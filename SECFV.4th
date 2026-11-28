@@ -36,7 +36,7 @@ CODE-SIZE	0	SEG: .forth
 
  FFSYS2: 763BED0D-DE9F-48F5-81F1-3E90E1B1A015 \ FvName
 
- FLOAD OVMF/OvmfPkg/Sec/SecMain.4th 
+  FLOAD OVMF/UefiCpuPkg/SecCore/SecMain.4th 
 
  CODE-SIZE $b10 - $28 - dp m!
 

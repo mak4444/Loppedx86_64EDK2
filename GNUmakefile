@@ -4,8 +4,8 @@ RM = rm -f
 WORKSPACE=$(shell pwd)
 
 SEC4TH = \
- OVMF/OvmfPkg/Sec/SecMain.4th \
- OVMF/OvmfPkg/ResetVector/ResetVector.4th 
+ OVMF/UefiCpuPkg/SecCore/SecMain.4th \
+ OVMF/OvmfPkg/ResetVector/ResetVector.4th
 
 PEI4TH = \
  OVMF/MdeModulePkg/Core/Pei/Pdc.4th \
@@ -78,10 +78,10 @@ OVMF/FVMAIN_COMPACT.guided.dummy: OVMF/SECFV.Fv OVMF/PEIFV.Fv OVMF/DXEFV.Fv
 OVMF/PEIFV.Fv: Meta_x86_64/MetaForth $(PEI4TH)
 	Meta_x86_64/MetaForth "FLOAD MLibs.4 FLOAD PEIFV.4th BYE"
 
-OVMF/DXEFV.Fv: Meta_x86_64/MetaForth $(SEC4TH)
+OVMF/DXEFV.Fv: Meta_x86_64/MetaForth $(DEX4TH)
 	Meta_x86_64/MetaForth "FLOAD MLibs.4 FLOAD DXEFV.4th BYE"
 
-OVMF/SECFV.Fv: Meta_x86_64/MetaForth $(DXE4TH)
+OVMF/SECFV.Fv: Meta_x86_64/MetaForth $(SEC4TH)
 	Meta_x86_64/MetaForth "FLOAD MLibs.4 FLOAD SECFV.4th BYE"
 
 GenFw: ../libs/libCommon.a
@@ -95,8 +95,8 @@ BUILD_EFI: GenFw
 	make -f OVMF/MdeModulePkg/Universal/PCD/Pei/GNUmakefile
 	make -f OVMF/OvmfPkg/PlatformPei/GNUmakefile
 	make -f OVMF/MdeModulePkg/Core/DxeIplPeim/GNUmakefile
-	make -f OVMF/OvmfPkg/Sec/GNUmakefile 
-	make -f OVMF/OvmfPkg/ResetVector/GNUmakefile 
+	make -f OVMF/UefiCpuPkg/SecCore/GNUmakefile
+	make -f OVMF/OvmfPkg/ResetVector/GNUmakefile
 	make -f OVMF/MdeModulePkg/Universal/WatchdogTimerDxe/GNUmakefile
 	make -f OVMF/MdeModulePkg/Universal/Metronome/GNUmakefile
 	make -f OVMF/MdeModulePkg/Universal/SecurityStubDxe/GNUmakefile
@@ -334,11 +334,10 @@ clean:
 	$(RM) OVMF/DXEFV.Fv
 	$(RM) OVMF/FVMAIN_COMPACT.BIN
 	$(RM) OVMF/FVMAIN_COMPACT.guided.dummy
-	make -f OVMF/OvmfPkg/Sec/GNUmakefile clean
+	make -f OVMF/UefiCpuPkg/SecCore/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Core/Pei/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Universal/PCD/Pei/GNUmakefile clean
 	make -f OVMF/OvmfPkg/PlatformPei/GNUmakefile clean
-	make -f OVMF/OvmfPkg/Sec/GNUmakefile clean
 	make -f OVMF/OvmfPkg/ResetVector/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Universal/WatchdogTimerDxe/GNUmakefile clean
 	make -f OVMF/MdeModulePkg/Universal/Metronome/GNUmakefile clean
