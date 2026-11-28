@@ -19,6 +19,8 @@
 #include <Library/PeCoffGetEntryPointLib.h>
 #include <Library/PeCoffExtraActionLib.h>
 #include <Library/ExtractGuidedSectionLib.h>
+#include <Register/Intel/ArchitecturalMsr.h>
+#include <Register/Intel/Cpuid.h>
 #include <Ppi/TemporaryRamSupport.h>
 
 #define SEC_IDT_ENTRY_COUNT  34
