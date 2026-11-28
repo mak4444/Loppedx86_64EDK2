@@ -1,6 +1,6 @@
 
 \  0x1BC TO NumBlocks
-  0x80 TO NumBlocks
+  0x70 TO NumBlocks
   0x1000 TO LengthBlock
 
  NumBlocks LengthBlock * TO CODE-SIZE
